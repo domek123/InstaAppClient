@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="registerViewModel"
+            type="com.example.instaapp.viewmodel.RegisterViewModel" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="70dp"
+                android:textSize="50dp"
+                android:text="Rejestracja" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="Login:" />
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:id="@+id/loginET"
+                >
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="Email:" />
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:id="@+id/emailET"
+                >
+            </EditText>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:textSize="20dp"
+                android:text="Hasło:" />
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="40dp"
+                android:textSize="15dp"
+                android:id="@+id/passwordET"
+                >
+            </EditText>
+        </LinearLayout>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:text="Zarejestruj"
+            android:id="@+id/singUpButton"/>
+        <TextView
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:autoLink="web"
+            android:text="@{registerViewModel.observedUser.message}" />
+    </LinearLayout>
+</layout>
