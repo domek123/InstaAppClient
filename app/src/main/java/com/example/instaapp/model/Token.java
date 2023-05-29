@@ -9,4 +9,8 @@ public class Token {
     public static String getToken(){
         return Token.token;
     }
+
+    public static void setToken(String token) {
+        Token.token = token;
+    }
 }

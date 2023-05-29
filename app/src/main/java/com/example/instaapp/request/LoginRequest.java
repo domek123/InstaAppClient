@@ -1,11 +1,11 @@
 package com.example.instaapp.request;
 
 public class LoginRequest {
-    private String login;
+    private String email;
     private String password;
 
-    public LoginRequest(String login, String password) {
-        this.login = login;
+    public LoginRequest(String email, String password) {
+        this.email = email;
         this.password = password;
     }
 }

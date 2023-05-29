@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import com.example.instaapp.databinding.ActivityMainBinding;
+import com.example.instaapp.model.Token;
 import com.example.instaapp.viewmodel.RegisterViewModel;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,5 +20,6 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
         setContentView(view);
+        Log.d("token", Token.getToken());
     }
 }
