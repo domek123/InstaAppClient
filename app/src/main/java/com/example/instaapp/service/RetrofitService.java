@@ -5,7 +5,7 @@ import com.example.instaapp.api.UserAPI;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class UserService {
+public class RetrofitService {
     private static final String BASE_URL = "http://192.168.0.176:3000";
 
     private static final Retrofit retrofit = new Retrofit.Builder()

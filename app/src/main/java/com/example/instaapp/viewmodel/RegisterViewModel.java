@@ -1,5 +1,8 @@
 package com.example.instaapp.viewmodel;
 
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.content.Intent;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -7,7 +10,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.instaapp.request.RegisterRequest;
 import com.example.instaapp.response.RegisterResponse;
-import com.example.instaapp.service.UserService;
+import com.example.instaapp.service.RetrofitService;
+import com.example.instaapp.view.LoginActivity;
+import com.example.instaapp.view.RegisterActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -19,8 +24,8 @@ public class RegisterViewModel extends ViewModel {
     public RegisterViewModel(){
         this.mutableUser = new MutableLiveData<>();
     }
-    public void registerUser(String login, String email, String password) {
-        Call<RegisterResponse> call = UserService.getUserInterface().postRegisterData(new RegisterRequest(login, email, password));
+    public void registerUser(String login, String email, String password, RegisterActivity registerActivity) {
+        Call<RegisterResponse> call = RetrofitService.getUserInterface().postRegisterData(new RegisterRequest(login, email, password));
 
         call.enqueue(new Callback<RegisterResponse>() {
             @Override
@@ -30,6 +35,8 @@ public class RegisterViewModel extends ViewModel {
                     return;
                 }else{
                     mutableUser.setValue(response.body());
+                    Intent intent = new Intent(registerActivity, LoginActivity.class);
+
                 }
 
             }
