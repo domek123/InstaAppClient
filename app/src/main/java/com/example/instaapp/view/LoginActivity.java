@@ -54,8 +54,7 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         binding.singUpButton.setOnClickListener(l->{
-            Intent intent = new Intent(LoginActivity.this,RegisterActivity.class);
-            startActivity(intent);
+            finish();
         });
     }
 }
