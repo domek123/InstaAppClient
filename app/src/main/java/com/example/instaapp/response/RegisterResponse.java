@@ -1,19 +1,15 @@
 package com.example.instaapp.response;
 
 public class RegisterResponse {
-    String message;
+    String response;
 
     public RegisterResponse() {
-        this.message = "";
+        this.response = "";
     }
-    public RegisterResponse(String message) {
-        this.message = message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
+    public void setMessage(String response) {
+        this.response = response;
     }
     public String getMessage() {
-        return message;
+        return response;
     }
 }

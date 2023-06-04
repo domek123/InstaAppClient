@@ -1,5 +1,6 @@
 package com.example.instaapp.service;
 
+import com.example.instaapp.api.PhotoApi;
 import com.example.instaapp.api.UserAPI;
 
 import retrofit2.Retrofit;
@@ -16,4 +17,5 @@ public class RetrofitService {
     // zwracamy interfejs na zewnątrz
 
     public static UserAPI getUserInterface() {return retrofit.create(UserAPI.class);}
+    public static PhotoApi getPhotoInterface(){ return retrofit.create(PhotoApi.class);}
 }
