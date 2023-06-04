@@ -9,14 +9,16 @@ public class Photo {
     private String url;
     private String lastChange;
     private ArrayList<HistoryChange> history;
+    private ArrayList<Tag> tags;
 
-    public Photo(String id, String albumName, String originalName, String url, String lastChange, ArrayList<HistoryChange> history) {
+    public Photo(String id, String albumName, String originalName, String url, String lastChange, ArrayList<HistoryChange> history, ArrayList<Tag> tags) {
         this.id = id;
         this.albumName = albumName;
         this.originalName = originalName;
         this.url = url;
         this.lastChange = lastChange;
         this.history = history;
+        this.tags = tags;
     }
 
     public String getId() {
@@ -42,15 +44,18 @@ public class Photo {
     public ArrayList<HistoryChange> getHistory() {
         return history;
     }
+
+    public ArrayList<Tag> getTags() {
+        return tags;
+    }
 }
 class HistoryChange{
     private String status;
     private String lastModifiedDate;
-    private String path;
 
     public HistoryChange(String status, String lastModifiedDate, String path) {
         this.status = status;
         this.lastModifiedDate = lastModifiedDate;
-        this.path = path;
     }
 }
+

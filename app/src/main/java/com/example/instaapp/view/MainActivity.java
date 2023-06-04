@@ -9,7 +9,9 @@ import android.view.View;
 
 import com.example.instaapp.R;
 import com.example.instaapp.databinding.ActivityMainBinding;
+import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Token;
+import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +28,12 @@ public class MainActivity extends AppCompatActivity {
         Fragment searchFr = new SearchFragment();
         Fragment profileFr = new ProfileFragment();
         replaceFragment(homeFr);
+        activityMainBinding.userLoginTv.setText(Profile.getName());
+        if(Profile.getPhoto() == null){
+            activityMainBinding.profilePhotoIV.setImageResource(R.drawable.user);
+        }else{
+            Picasso.get().load("http://192.168.0.176:3000/api/getfile/" + Profile.getPhoto().getId()).into(activityMainBinding.profilePhotoIV);
+        }
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item->{
             int id = item.getItemId();
 

@@ -4,7 +4,7 @@ public class Profile {
     private static String name;
     private static String email;
     private static String password;
-    private static Photo photo;
+    private static Photo photo = null;
 
     public static void setData(String name,String email,String password){
         Profile.name = name;
@@ -33,5 +33,13 @@ public class Profile {
 
     public static void setPassword(String password) {
         Profile.password = password;
+    }
+
+    public static void setPhoto(Photo photo) {
+        Profile.photo = photo;
+    }
+
+    public static Photo getPhoto() {
+        return photo;
     }
 }

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
+import com.example.instaapp.R;
 import com.example.instaapp.databinding.ActivityLoginBinding;
 import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Token;
