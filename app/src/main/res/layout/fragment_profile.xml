@@ -8,22 +8,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"/>
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:id="@+id/profilePictureIV"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_gravity="center">
-            <TextView
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/loginET"/>
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="zmien nazwe:"/>
+                android:id="@+id/changeName"
+                android:text="zmien nazwe"/>
         </LinearLayout>
     </LinearLayout>
     <Button
+        android:layout_marginHorizontal="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/makePhotoBtn"

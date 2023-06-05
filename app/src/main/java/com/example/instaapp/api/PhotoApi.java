@@ -38,6 +38,14 @@ public interface PhotoApi {
             @Part MultipartBody.Part file
     );
 
+    @Multipart
+    @POST("/api/profile")
+    Call<PhotoResponse> sendProfileImage(
+            @Header("Authorization") String token,
+            @Part("album") RequestBody album,
+            @Part MultipartBody.Part file
+    );
+
     @PATCH("/api/photos/tags/mass")
     Call<PhotoResponse> setTags(@Header("Authorization") String token, @Body MassTagRequest massTagRequest);
 }

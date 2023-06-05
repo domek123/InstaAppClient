@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModel;
 
 import com.example.instaapp.model.Tag;
 import com.example.instaapp.model.Token;
-import com.example.instaapp.model.smallTag;
+import com.example.instaapp.model.SmallTag;
 import com.example.instaapp.request.MassTagRequest;
 import com.example.instaapp.response.PhotoResponse;
-import com.example.instaapp.response.PhotosResponse;
-import com.example.instaapp.response.RegisterResponse;
 import com.example.instaapp.response.TagsResponse;
 import com.example.instaapp.service.RetrofitService;
 
@@ -52,9 +50,9 @@ public class TagsViewModel extends ViewModel {
         });
     }
     public void addTags(String id, ArrayList<String> tags){
-        ArrayList<smallTag> list = new ArrayList<>();
+        ArrayList<SmallTag> list = new ArrayList<>();
         for(String tag: tags){
-            list.add(new smallTag(tag));
+            list.add(new SmallTag(tag));
         }
         Call<PhotoResponse> call = RetrofitService.getPhotoInterface().setTags("Bearer " + Token.getToken(), new MassTagRequest(id,list));
 

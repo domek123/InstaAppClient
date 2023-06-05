@@ -1,6 +1,7 @@
 package com.example.instaapp.api;
 
 import com.example.instaapp.request.LoginRequest;
+import com.example.instaapp.request.ProfileRequest;
 import com.example.instaapp.request.RegisterRequest;
 import com.example.instaapp.response.RegisterResponse;
 import com.example.instaapp.response.UserResponse;
@@ -9,6 +10,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
+import retrofit2.http.PATCH;
 import retrofit2.http.POST;
 
 public interface UserAPI {
@@ -20,4 +22,7 @@ public interface UserAPI {
 
     @GET("/api/profile")
     Call<UserResponse> getUser(@Header("Authorization") String token);
+
+    @PATCH("/api/profile")
+    Call<UserResponse> changeUserName(@Header("Authorization") String token, @Body ProfileRequest profileRequest);
 }

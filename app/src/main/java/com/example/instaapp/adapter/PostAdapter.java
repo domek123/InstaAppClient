@@ -51,7 +51,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             desc += tag.getName();
         }
         holder.text.setText(desc);
-        holder.author.setText(list.get(position).getAlbumName());
     }
 
     @Override
@@ -60,13 +59,11 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView author;
         private TextView text;
         private ImageView img;
         private Button button;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            author = itemView.findViewById(R.id.authorTV);
             text = itemView.findViewById(R.id.tags);
             img = itemView.findViewById(R.id.photo);
             button = itemView.findViewById(R.id.showPhotoBtn);

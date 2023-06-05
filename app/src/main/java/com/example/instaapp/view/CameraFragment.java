@@ -69,9 +69,9 @@ public class CameraFragment extends Fragment {
             }, ContextCompat.getMainExecutor(getActivity()));
         }
         binding.PhotoBtn.setOnClickListener(l->{
-            Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+            long second = System.currentTimeMillis();
             ContentValues contentValues = new ContentValues();
-            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, "XDD");
+            contentValues.put(MediaStore.MediaColumns.DISPLAY_NAME, second);
             contentValues.put(MediaStore.MediaColumns.MIME_TYPE, "image/jpeg");
             ImageCapture.OutputFileOptions outputFileOptions =
                     new ImageCapture.OutputFileOptions.Builder(
@@ -84,7 +84,7 @@ public class CameraFragment extends Fragment {
                         @Override
                         public void onImageSaved(@NonNull ImageCapture.OutputFileResults outputFileResults) {
 
-                            String fileUri = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/XDD.jpg";
+                            String fileUri = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES) + "/" + second + ".jpg";
 
                             File file = new File(fileUri);
                             Log.d("zdjecie","zrobiono" + fileUri + " " + file.getName());

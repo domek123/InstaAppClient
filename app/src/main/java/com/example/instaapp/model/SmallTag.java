@@ -1,9 +1,9 @@
 package com.example.instaapp.model;
 
-public class smallTag {
+public class SmallTag {
     private String name;
 
-    public smallTag(String name) {
+    public SmallTag(String name) {
         this.name = name;
     }
 }

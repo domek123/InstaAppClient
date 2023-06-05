@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.instaapp.R;
 import com.example.instaapp.databinding.FragmentCameraBinding;
 import com.example.instaapp.databinding.FragmentEditPhotoBinding;
 import com.example.instaapp.model.Tag;
@@ -60,6 +61,10 @@ public class EditPhotoFragment extends Fragment {
                     binding.close.setOnClickListener(l->{
                         filterViewModel.setFilter(filter,id);
                         tagsViewModel.addTags(id,itemList);
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.flFragment, new HomeFragment())
+                                .addToBackStack(null)
+                                .commit();
                     });
                 });
 

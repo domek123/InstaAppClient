@@ -15,6 +15,7 @@ import android.widget.LinearLayout;
 import com.example.instaapp.adapter.PostAdapter;
 import com.example.instaapp.databinding.FragmentHomeBinding;
 import com.example.instaapp.model.Photo;
+import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Token;
 import com.example.instaapp.response.PhotosResponse;
 import com.example.instaapp.service.RetrofitService;
@@ -55,7 +56,13 @@ public class HomeFragment extends Fragment {
                     Log.d("xxx", "onResponse: " + photosResponse.getPhotoList().size());
                     if(photosResponse.getPhotoList().size() != 0) {
                         photos = photosResponse.getPhotoList();
-
+                        for(Photo p : photos){
+                            if (p.getAlbumName() == Profile.getEmail() && p.getUrl().split("/")[p.getUrl().split("/").length-1] == "profile.jpg") {
+                                Profile.setPhoto(p);
+                                getActivity().finish();
+                                getActivity().startActivity(getActivity().getIntent());
+                            }
+                        }
                         StaggeredGridLayoutManager staggeredGridLayoutManager
                                 = new StaggeredGridLayoutManager(1, LinearLayout.VERTICAL);
                         binding.albumPhotoRecView.setLayoutManager(staggeredGridLayoutManager);

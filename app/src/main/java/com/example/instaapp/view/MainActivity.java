@@ -11,6 +11,7 @@ import com.example.instaapp.R;
 import com.example.instaapp.databinding.ActivityMainBinding;
 import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Token;
+import com.example.instaapp.service.RetrofitService;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(view);
         Log.d("token", Token.getToken());
         Fragment homeFr = new HomeFragment();
-        Fragment searchFr = new SearchFragment();
         Fragment profileFr = new ProfileFragment();
         replaceFragment(homeFr);
         activityMainBinding.userLoginTv.setText(Profile.getName());
         if(Profile.getPhoto() == null){
             activityMainBinding.profilePhotoIV.setImageResource(R.drawable.user);
         }else{
-            Picasso.get().load("http://192.168.0.176:3000/api/getfile/" + Profile.getPhoto().getId()).into(activityMainBinding.profilePhotoIV);
+            String url = RetrofitService.BASE_URL + "/api/getfile/" + Profile.getPhoto().getId();
+            Picasso.get().load(url).into(activityMainBinding.profilePhotoIV);
         }
         activityMainBinding.bottomNavigationView.setOnItemSelectedListener(item->{
             int id = item.getItemId();
@@ -40,9 +41,6 @@ public class MainActivity extends AppCompatActivity {
             switch(id){
                 case R.id.home:
                     replaceFragment(homeFr);
-                    break;
-                case R.id.search:
-                    replaceFragment(searchFr);
                     break;
                 case R.id.profile:
                     replaceFragment(profileFr);
