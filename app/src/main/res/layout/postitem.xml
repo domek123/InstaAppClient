@@ -1,24 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--    android:layout_width="wrap_content"-->
-<!--    android:layout_height="wrap_content"-->
-<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
-<!--    app:cardBackgroundColor="@color/black"-->
-<!--    android:layout_marginBottom="10dp">-->
-<!--        <ImageView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:id="@+id/photo"-->
-<!--            />-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:textColor="@color/white"-->
-<!--            android:text="#XDD"-->
-<!--            android:id="@+id/tags"-->
-<!--            />-->
-
-<!--</androidx.cardview.widget.CardView>-->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
 android:id="@+id/card"
 android:layout_width="match_parent"
@@ -64,6 +44,13 @@ android:layout_margin="8dp">
             android:textAppearance="?attr/textAppearanceBody2"
             android:textColor="?android:attr/textColorSecondary"
             />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="pokaż więcej"
+            android:id="@+id/showPhotoBtn"
+            android:layout_margin="4dp"/>
 </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

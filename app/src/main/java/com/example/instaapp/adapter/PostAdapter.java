@@ -1,19 +1,26 @@
 package com.example.instaapp.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.instaapp.PhotoActivity;
 import com.example.instaapp.R;
+import com.example.instaapp.ServerSettings;
 import com.example.instaapp.model.Photo;
 import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Tag;
 import com.example.instaapp.view.HomeFragment;
+import com.example.instaapp.view.LoginActivity;
+import com.example.instaapp.view.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -36,7 +43,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
-        Picasso.get().load("http://192.168.0.176:3000/api/getfile/" + list.get(position).getId()).into(holder.img);
+        String url = ServerSettings.host + "/api/getfile/" + list.get(position).getId();
+        Picasso.get().load(url).into(holder.img);
+        holder.button.setOnClickListener(l->{
+            Intent intent = new Intent(homeFragment.getActivity(), PhotoActivity.class);
+            intent.putExtra("url",url);
+            homeFragment.startActivity(intent);
+        });
         String desc = "#XDDD";
         for(Tag tag : list.get(position).getTags()){
             desc += tag.getName();
@@ -54,11 +67,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         private TextView author;
         private TextView text;
         private ImageView img;
+        private Button button;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             author = itemView.findViewById(R.id.authorTV);
             text = itemView.findViewById(R.id.tags);
             img = itemView.findViewById(R.id.photo);
+            button = itemView.findViewById(R.id.showPhotoBtn);
         }
     }
 }
