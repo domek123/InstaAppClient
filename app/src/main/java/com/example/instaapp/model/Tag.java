@@ -22,4 +22,13 @@ public class Tag{
     public int getPopularity() {
         return popularity;
     }
+
+    @Override
+    public String toString() {
+        return "Tag{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", popularity=" + popularity +
+                '}';
+    }
 }

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="FilterViewModel"
+            type="com.example.instaapp.viewmodel.FilterViewModel" />
+        <variable
+            name="TagsViewModel"
+            type="com.example.instaapp.viewmodel.TagsViewModel" />
+    </data>
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.EditPhotoFragment"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+
+            android:id="@+id/editPhotoIV"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+            <Spinner
+                android:layout_weight="1"
+                android:id="@+id/filterSpinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@{FilterViewModel.getObservedItemList()}"
+                android:selectedItemPosition="@{0}" />
+            <Button
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/setFilter"
+                android:text="ustaw filtr"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+            <Spinner
+                android:id="@+id/tagSpinner"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@{TagsViewModel.getObservedItemList()}"
+                android:selectedItemPosition="@{1}" />
+            <Button
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/addTag"
+                android:text="dodaj tag"
+                />
+        </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/close"
+            android:text="zapisz"/>
+
+
+    </LinearLayout>
+</layout>

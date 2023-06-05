@@ -4,10 +4,10 @@ import com.example.instaapp.model.Photo;
 
 import java.util.ArrayList;
 
-public class PhotoResponse {
-    private Photo response;
+public class PhotosResponse {
+    private ArrayList<Photo> response;
 
-    public Photo getPhoto() {
+    public ArrayList<Photo> getPhotoList() {
         return response;
     }
 }

@@ -9,18 +9,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.instaapp.PhotoActivity;
+import com.example.instaapp.view.PhotoActivity;
 import com.example.instaapp.R;
-import com.example.instaapp.ServerSettings;
 import com.example.instaapp.model.Photo;
-import com.example.instaapp.model.Profile;
 import com.example.instaapp.model.Tag;
+import com.example.instaapp.service.RetrofitService;
 import com.example.instaapp.view.HomeFragment;
-import com.example.instaapp.view.LoginActivity;
-import com.example.instaapp.view.MainActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -43,19 +39,19 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull PostAdapter.ViewHolder holder, int position) {
-        String url = ServerSettings.host + "/api/getfile/" + list.get(position).getId();
+        String url = RetrofitService.BASE_URL + "/api/getfile/" + list.get(position).getId();
         Picasso.get().load(url).into(holder.img);
         holder.button.setOnClickListener(l->{
             Intent intent = new Intent(homeFragment.getActivity(), PhotoActivity.class);
             intent.putExtra("url",url);
             homeFragment.startActivity(intent);
         });
-        String desc = "#XDDD";
+        String desc = "";
         for(Tag tag : list.get(position).getTags()){
             desc += tag.getName();
         }
         holder.text.setText(desc);
-        holder.author.setText(Profile.getName());
+        holder.author.setText(list.get(position).getAlbumName());
     }
 
     @Override

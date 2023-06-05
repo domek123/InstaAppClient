@@ -4,16 +4,15 @@ import java.util.ArrayList;
 
 public class Photo {
     private String id;
-    private String albumName;
+    private String album;
     private String originalName;
     private String url;
     private String lastChange;
     private ArrayList<HistoryChange> history;
     private ArrayList<Tag> tags;
-
     public Photo(String id, String albumName, String originalName, String url, String lastChange, ArrayList<HistoryChange> history, ArrayList<Tag> tags) {
         this.id = id;
-        this.albumName = albumName;
+        this.album = albumName;
         this.originalName = originalName;
         this.url = url;
         this.lastChange = lastChange;
@@ -26,7 +25,7 @@ public class Photo {
     }
 
     public String getAlbumName() {
-        return albumName;
+        return album;
     }
 
     public String getOriginalName() {
@@ -47,6 +46,19 @@ public class Photo {
 
     public ArrayList<Tag> getTags() {
         return tags;
+    }
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id='" + id + '\'' +
+                ", album='" + album + '\'' +
+                ", originalName='" + originalName + '\'' +
+                ", url='" + url + '\'' +
+                ", lastChange='" + lastChange + '\'' +
+                ", history=" + history +
+                ", tags=" + tags +
+                '}';
     }
 }
 class HistoryChange{

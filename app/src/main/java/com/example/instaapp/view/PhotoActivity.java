@@ -1,4 +1,4 @@
-package com.example.instaapp;
+package com.example.instaapp.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
