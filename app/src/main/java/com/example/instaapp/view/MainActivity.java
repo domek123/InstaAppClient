@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         View view = activityMainBinding.getRoot();
         setContentView(view);
-        Log.d("token", Token.getToken());
+        Log.d("token", Token.getToken() + " ");
         Fragment homeFr = new HomeFragment();
         Fragment profileFr = new ProfileFragment();
         replaceFragment(homeFr);

@@ -38,11 +38,22 @@
         android:id="@+id/makePhotoBtn"
         android:text="zrob nowe zdjecie">
     </Button>
+    <Button
+
+        android:layout_marginHorizontal="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/logout"
+        android:text="wyloguj"/>
     <FrameLayout
         android:id="@+id/cameraFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"/>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="6dp"
+        android:id="@+id/albumPhotoRV"/>
 
 </LinearLayout>

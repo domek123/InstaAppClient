@@ -19,20 +19,8 @@ public class Profile {
         return email;
     }
 
-    public static String getPassword() {
-        return password;
-    }
-
     public static void setName(String name) {
         Profile.name = name;
-    }
-
-    public static void setEmail(String email) {
-        Profile.email = email;
-    }
-
-    public static void setPassword(String password) {
-        Profile.password = password;
     }
 
     public static void setPhoto(Photo photo) {
@@ -41,5 +29,11 @@ public class Profile {
 
     public static Photo getPhoto() {
         return photo;
+    }
+
+    public static void clearProfile(){
+        Profile.name = "";
+        Profile.email = "";
+        Profile.photo = null;
     }
 }

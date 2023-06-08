@@ -75,7 +75,6 @@ public class TagsViewModel extends ViewModel {
 
     }
     public MutableLiveData<ArrayList<String>> getObservedItemList() {
-
         return mutableItemList;
     }
 }

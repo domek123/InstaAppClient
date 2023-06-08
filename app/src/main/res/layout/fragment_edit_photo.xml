@@ -50,7 +50,6 @@
                 android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@{TagsViewModel.getObservedItemList()}"
                 android:selectedItemPosition="@{1}" />
             <Button
                 android:layout_weight="1"
@@ -60,6 +59,12 @@
                 android:text="dodaj tag"
                 />
         </LinearLayout>
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addLocBtn"
+            android:text="dodaj lokalizacje"/>
+
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

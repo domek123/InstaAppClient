@@ -26,7 +26,7 @@ public class PhotosViewModel extends ViewModel {
     public PhotosViewModel(){photos= new MutableLiveData<>();}
 
     public void savePhoto(RequestBody album, MultipartBody.Part body, FragmentActivity activity){
-        Call<PhotoResponse> call = RetrofitService.getPhotoInterface().sendImage("Bearer" + Token.getToken(),album,body);
+        Call<PhotoResponse> call = RetrofitService.getPhotoInterface().sendImage("Bearer" + Token.getToken(),album, body);
 
         call.enqueue(new Callback<PhotoResponse>() {
             @Override
@@ -34,12 +34,12 @@ public class PhotosViewModel extends ViewModel {
                 if(!response.isSuccessful()){
                     return;
                 }else{
-                    Log.d("getPhoto",response.body().toString());
                     PhotoResponse p = response.body();
                     EditPhotoFragment editPhotoFragment = new EditPhotoFragment();
                     Bundle bundle = new Bundle();
+                    Log.d("getPhoto",p.getPhoto().getOriginalName());
                     bundle.putString("data", "" + p.getPhoto().getId());
-
+                    bundle.putString("ext", "" + p.getPhoto().getOriginalName().split("\\.")[1]);
                     activity.getSupportFragmentManager().setFragmentResult("datafromfragment1", bundle);
                     activity.getSupportFragmentManager().beginTransaction()
                             .replace(R.id.flFragment, editPhotoFragment)

@@ -31,7 +31,7 @@ public class ProfileViewModel extends ViewModel {
 
     public void saveProfilePhoto(RequestBody album, MultipartBody.Part body, FragmentActivity activity){
 
-        Call<PhotoResponse> call = RetrofitService.getPhotoInterface().sendProfileImage("Bearer" + Token.getToken(),album,body);
+        Call<PhotoResponse> call = RetrofitService.getPhotoInterface().sendProfileImage("Bearer" + Token.getToken(),album, "krakow", body);
 
         call.enqueue(new Callback<PhotoResponse>() {
             @Override
@@ -77,9 +77,6 @@ public class ProfileViewModel extends ViewModel {
                 Log.d("getPhoto",t.getMessage());
             }
         });
-    }
-    public void changeProfile(ProfileToEdit profile){
-        mutableLiveData.setValue(profile);
     }
 
     public MutableLiveData<ProfileToEdit> getObservedData() {

@@ -1,5 +1,6 @@
 package com.example.instaapp.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -21,6 +22,8 @@ import com.example.instaapp.response.PhotosResponse;
 import com.example.instaapp.service.RetrofitService;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,13 +59,22 @@ public class HomeFragment extends Fragment {
                     Log.d("xxx", "onResponse: " + photosResponse.getPhotoList().size());
                     if(photosResponse.getPhotoList().size() != 0) {
                         photos = photosResponse.getPhotoList();
-                        for(Photo p : photos){
-                            if (p.getAlbumName() == Profile.getEmail() && p.getUrl().split("/")[p.getUrl().split("/").length-1] == "profile.jpg") {
-                                Profile.setPhoto(p);
-                                getActivity().finish();
-                                getActivity().startActivity(getActivity().getIntent());
+                        Collections.reverse(photos);
+                        if(Profile.getPhoto() == null){
+                            for(Photo p : photos){
+                                Log.d("profileLogin",p.getAlbumName() + " " + Profile.getEmail());
+
+                                String[] splitedUrl = p.getUrl().split("/");
+                                Log.d("profileLoginPhoto",splitedUrl[splitedUrl.length-1]);
+                                if (p.getAlbumName().equals(Profile.getEmail()) && splitedUrl[splitedUrl.length-1].equals("profile.jpg")) {
+                                    Profile.setPhoto(p);
+
+                                    Intent intent = new Intent(getActivity(),MainActivity.class);
+                                    startActivity(intent);
+                                }
                             }
                         }
+                        photos.remove(Profile.getPhoto());
                         StaggeredGridLayoutManager staggeredGridLayoutManager
                                 = new StaggeredGridLayoutManager(1, LinearLayout.VERTICAL);
                         binding.albumPhotoRecView.setLayoutManager(staggeredGridLayoutManager);

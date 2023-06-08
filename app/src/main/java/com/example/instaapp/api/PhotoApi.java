@@ -2,6 +2,7 @@ package com.example.instaapp.api;
 
 import com.example.instaapp.model.Photo;
 import com.example.instaapp.request.FilterRequest;
+import com.example.instaapp.request.LocationRequest;
 import com.example.instaapp.request.MassTagRequest;
 import com.example.instaapp.response.PhotoResponse;
 import com.example.instaapp.response.PhotosResponse;
@@ -27,9 +28,6 @@ public interface PhotoApi {
     @GET("/api/photos/{albumName}")
     Call<PhotosResponse> getAlbumPhoto(@Header("Authorization") String token, @Path("albumName") String albumName);
 
-    @GET("/api/getfile/{id}")
-    Call<ResponseBody> getPhoto(@Header("Authorization") String token, @Path("id") String id);
-
     @Multipart
     @POST("/api/photos")
     Call<PhotoResponse> sendImage(
@@ -43,9 +41,13 @@ public interface PhotoApi {
     Call<PhotoResponse> sendProfileImage(
             @Header("Authorization") String token,
             @Part("album") RequestBody album,
+            @Part("region") String region,
             @Part MultipartBody.Part file
     );
 
     @PATCH("/api/photos/tags/mass")
     Call<PhotoResponse> setTags(@Header("Authorization") String token, @Body MassTagRequest massTagRequest);
+
+    @PATCH("/api/photos/location")
+    Call<String> setLocation(@Header("Authorization") String token, @Body LocationRequest locationRequest);
 }
